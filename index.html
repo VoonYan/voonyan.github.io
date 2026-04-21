@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voon Yan Kho — Data Scientist</title>
+<meta name="description" content="Voon Yan Kho — Data Science & Computer Science student at UWA. Machine learning, medical research, social impact.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ── design tokens ── */
+:root {
+  --bg:      #fbfaf7;
+  --bg-alt:  #f4f2ec;
+  --ink:     #111111;
+  --mid:     #555555;
+  --faint:   #9a9a94;
+  --line:    #e9e6df;
+  --hover-bg:#f1eee7;
+
+  /* editorial accents — for project/experience tiles */
+  --c-sage:    #dfe8dc;
+  --c-peach:   #f4dac7;
+  --c-sky:     #d8e5ef;
+  --c-lilac:   #e2dbee;
+  --c-gold:    #f0e6c2;
+  --c-rose:    #efd6d8;
+  --c-mint:    #d3e6dd;
+  --c-coral:   #f1c8b6;
+
+  --font-sans:  'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Instrument Serif', 'DM Serif Display', Georgia, serif;
+  --font-mono:  'DM Mono', ui-monospace, Menlo, monospace;
+
+  --max: 720px;
+  --nav-h: 60px;
+}
+[data-theme="dark"] {
+  --bg:      #0d0d0c;
+  --bg-alt:  #151513;
+  --ink:     #f1eee7;
+  --mid:     #a5a29a;
+  --faint:   #5e5c55;
+  --line:    #242220;
+  --hover-bg:#1a1916;
+
+  --c-sage:    #2a362a;
+  --c-peach:   #3a2a22;
+  --c-sky:     #1e2a35;
+  --c-lilac:   #2b2538;
+  --c-gold:    #39321c;
+  --c-rose:    #362325;
+  --c-mint:    #1e3129;
+  --c-coral:   #3a2620;
+}
+
+/* ── reset ── */
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0 }
+html { scroll-behavior: smooth }
+body {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--ink);
+  transition: background .3s, color .3s;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none }
+ul { list-style: none }
+button { cursor: pointer; border: none; background: none; font: inherit; color: inherit }
+::selection { background: var(--ink); color: var(--bg) }
+
+/* ── soft grain texture — very subtle ── */
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: .35;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── nav ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--nav-h);
+  display: flex; align-items: center;
+  padding: 0 2rem;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .25s, background .3s;
+}
+nav.scrolled { border-color: var(--line) }
+.nav-inner {
+  max-width: var(--max); width: 100%; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 18px; font-weight: 400; letter-spacing: -.005em;
+  color: var(--ink);
+  display: flex; align-items: center; gap: .4rem;
+}
+.nav-logo .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #3dbc5e;
+  box-shadow: 0 0 0 0 rgba(61,188,94,.45);
+  animation: pulse 2.4s infinite;
+}
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(61,188,94,.5) }
+  70%  { box-shadow: 0 0 0 8px rgba(61,188,94,0) }
+  100% { box-shadow: 0 0 0 0 rgba(61,188,94,0) }
+}
+.nav-right { display: flex; align-items: center; gap: 1.5rem }
+.nav-right a {
+  font-size: 13px; color: var(--mid); transition: color .15s;
+}
+.nav-right a:hover { color: var(--ink) }
+.theme-btn {
+  font-size: 14px; color: var(--mid);
+  transition: color .15s, transform .25s;
+  padding: .25rem;
+}
+.theme-btn:hover { color: var(--ink); transform: rotate(-15deg) }
+
+/* ── site-wide fixed background photo ── */
+.site-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.site-bg img {
+  width: 100%; height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+[data-theme="dark"] .site-bg img { opacity: .55; filter: saturate(.85) brightness(.7) }
+
+/* ── page wrapper (frosted card that floats over the photo) ── */
+.page {
+  position: relative;
+  z-index: 2;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 2rem;
+  background: color-mix(in srgb, var(--bg) 68%, transparent);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+}
+
+/* ── hero (transparent — photo shows through) ── */
+#hero {
+  position: relative;
+  z-index: 2;
+  padding-top: calc(var(--nav-h) + 5rem);
+  padding-bottom: 6rem;
+  min-height: 88vh;
+  display: flex; align-items: flex-start;
+}
+.hero-inner {
+  position: relative;
+  max-width: var(--max);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+/* ── profile photo — round, prominent ── */
+.hero-avatar {
+  display: block;
+  width: 148px; height: 148px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  border: 4px solid var(--bg);
+  box-shadow: 0 10px 32px rgba(0,0,0,.22), 0 0 0 1px rgba(0,0,0,.06);
+  background: var(--bg-alt);
+  transition: transform .35s ease, box-shadow .35s ease;
+  aspect-ratio: 1 / 1;
+}
+.hero-avatar:hover { transform: scale(1.05) rotate(-3deg); box-shadow: 0 12px 36px rgba(0,0,0,.28) }
+.hero-avatar img { width: 100%; height: 100%; object-fit: cover; display: block }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: .02em;
+  color: var(--mid);
+  padding: .3rem .7rem;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  margin-bottom: 1.25rem;
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.hero-badge .bdot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #3dbc5e;
+  animation: pulse 2.4s infinite;
+}
+.hero-name {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -.015em;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+.hero-name em { font-style: italic; color: var(--mid) }
+.hero-bio {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 1.25rem;
+}
+.hero-bio strong { color: var(--ink); font-weight: 500 }
+
+/* rotating tagline */
+.rotate-line {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--faint);
+  letter-spacing: .02em;
+  margin-bottom: 2rem;
+  display: flex; align-items: center; gap: .6rem;
+  flex-wrap: wrap;
+}
+.rotate-line .rot-label { color: var(--faint) }
+.rotate-wrap {
+  display: inline-flex;
+  height: 1.2em; overflow: hidden;
+  vertical-align: bottom;
+}
+.rotate-stack {
+  display: flex; flex-direction: column;
+  animation: rotateWords 9s steps(3) infinite;
+}
+.rotate-stack span {
+  height: 1.2em;
+  color: var(--ink);
+  font-weight: 500;
+}
+@keyframes rotateWords {
+  0%,28%   { transform: translateY(0) }
+  33%,61%  { transform: translateY(-1.2em) }
+  66%,94%  { transform: translateY(-2.4em) }
+  100%     { transform: translateY(-3.6em) }
+}
+
+.hero-links { display: flex; gap: 1.25rem; flex-wrap: wrap }
+.hero-link {
+  font-size: 13px; color: var(--mid);
+  display: inline-flex; align-items: center; gap: .35rem;
+  transition: color .18s;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+}
+.hero-link:hover { color: var(--ink); border-color: var(--ink) }
+.hero-link .arr { transition: transform .18s; font-size: 12px }
+.hero-link:hover .arr { transform: translate(2px,-2px) }
+.hero-link[href*="mailto"]:hover .arr { transform: translateX(2px) }
+
+/* ── section ── */
+.section {
+  padding: 4.5rem 0;
+  border-top: 1px solid var(--line);
+}
+.section-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+.section-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--faint);
+  display: flex; align-items: center; gap: .6rem;
+}
+.section-title::before {
+  content: "";
+  width: 18px; height: 1px; background: var(--faint);
+}
+.section-more {
+  font-size: 12px; color: var(--faint);
+  transition: color .15s;
+  display: inline-flex; align-items: center; gap: .25rem;
+}
+.section-more:hover { color: var(--ink) }
+
+/* ── statement / about ── */
+.statement {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3.3vw, 2rem);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -.005em;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+.statement em { font-style: italic; color: var(--mid) }
+.about-text {
+  font-size: 15px; font-weight: 300; color: var(--mid); line-height: 1.8;
+}
+.about-text p + p { margin-top: 1rem }
+.about-text strong { color: var(--ink); font-weight: 500 }
+
+/* ── experience ── */
+.exp-list { display: flex; flex-direction: column }
+.exp-item {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  transition: background .2s;
+}
+.exp-item:first-child { border-top: 1px solid var(--line) }
+.exp-item::before {
+  content: "";
+  position: absolute;
+  left: -.6rem; top: 1.75rem;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--exp-color, var(--faint));
+  opacity: 0;
+  transition: opacity .25s;
+}
+.exp-item:hover::before { opacity: 1 }
+.exp-item:hover { background: var(--hover-bg) }
+.exp-meta {
+  font-family: var(--font-mono);
+  font-size: 11px; color: var(--faint);
+  padding-top: 3px; line-height: 1.6;
+  letter-spacing: .02em;
+}
+.exp-body {}
+.exp-role { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: .2rem; display: flex; align-items: center; gap: .5rem }
+.exp-role .emo { font-size: 13px }
+.exp-org { font-size: 13px; color: var(--mid); margin-bottom: .5rem }
+.exp-org em { font-style: normal; color: var(--faint); font-size: 12px }
+.exp-desc { font-size: 13px; color: var(--mid); line-height: 1.65 }
+.exp-tags { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .6rem }
+.tag {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: .02em;
+  padding: .2rem .55rem;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  color: var(--faint);
+  transition: border-color .15s, color .15s;
+}
+.exp-item:hover .tag { color: var(--mid) }
+
+/* ── projects ── */
+.project-list { display: flex; flex-direction: column; gap: .75rem }
+.project-item {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.15rem 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg);
+  cursor: pointer;
+  transition: border-color .2s, background .2s, transform .25s;
+  position: relative;
+  overflow: hidden;
+}
+.project-item::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--p-color, var(--c-sage));
+  opacity: 0;
+  transition: opacity .3s;
+  z-index: 0;
+}
+.project-item:hover { border-color: transparent; transform: translateY(-2px) }
+.project-item:hover::before { opacity: 1 }
+.project-item > * { position: relative; z-index: 1 }
+.project-thumb {
+  width: 72px; height: 52px;
+  background: var(--p-color, var(--c-sage));
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  transition: transform .3s;
+}
+.project-item:hover .project-thumb { transform: scale(1.06) rotate(-3deg) }
+.project-body {}
+.project-name { font-size: 14.5px; font-weight: 500; color: var(--ink); margin-bottom: .2rem; letter-spacing: -.005em }
+.project-desc { font-size: 13px; color: var(--mid); line-height: 1.55 }
+.project-meta {
+  font-family: var(--font-mono);
+  font-size: 10.5px; color: var(--faint); margin-top: .4rem;
+  letter-spacing: .02em;
+}
+.project-arr {
+  font-size: 14px; color: var(--faint);
+  transition: transform .2s, color .2s;
+}
+.project-item:hover .project-arr { transform: translate(3px,-3px); color: var(--ink) }
+
+/* ── skills marquee ── */
+.marquee {
+  overflow: hidden;
+  position: relative;
+  padding: .75rem 0;
+  margin: 0 calc(-1 * 2rem);
+  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+.marquee-track {
+  display: inline-flex;
+  gap: .75rem;
+  animation: scroll 42s linear infinite;
+  padding-left: .75rem;
+}
+.marquee:hover .marquee-track { animation-play-state: paused }
+.marquee-chip {
+  display: inline-flex; align-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px; color: var(--mid);
+  padding: .4rem .9rem;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  background: var(--bg);
+  white-space: nowrap;
+}
+@keyframes scroll {
+  from { transform: translateX(0) }
+  to   { transform: translateX(-50%) }
+}
+
+/* ── skills grid ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 2rem;
+}
+.skill-group {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.skill-group:nth-child(odd) { padding-right: 2rem; border-right: 1px solid var(--line) }
+.skill-group:nth-child(even) { padding-left: 2rem }
+.skill-group:nth-last-child(-n+2) { border-bottom: none }
+.skill-name {
+  font-size: 13px; font-weight: 500; color: var(--ink);
+  margin-bottom: .4rem;
+  display: flex; align-items: center; gap: .5rem;
+}
+.skill-name .emo { font-size: 12px }
+.skill-list { font-size: 12.5px; color: var(--faint); line-height: 1.7 }
+
+/* ── certs ── */
+.cert-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 2rem;
+}
+.cert-item {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem;
+  padding: .7rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.cert-name { font-size: 13px; color: var(--ink); letter-spacing: -.003em }
+.cert-year {
+  font-family: var(--font-mono);
+  font-size: 11px; color: var(--faint);
+  flex-shrink: 0;
+  letter-spacing: .02em;
+}
+
+/* ── education ── */
+.edu-card {
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg-alt);
+}
+.edu-top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap }
+.edu-school { font-family: var(--font-serif); font-size: 1.3rem; color: var(--ink); letter-spacing: -.005em }
+.edu-when { font-family: var(--font-mono); font-size: 11px; color: var(--faint) }
+.edu-degree { font-size: 14px; color: var(--mid); margin-top: .3rem }
+.edu-stats {
+  display: flex; gap: 2rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+.edu-stat .n {
+  font-family: var(--font-serif);
+  font-size: 1.6rem; color: var(--ink);
+  letter-spacing: -.01em;
+  line-height: 1;
+}
+.edu-stat .l {
+  font-family: var(--font-mono);
+  font-size: 10.5px; color: var(--faint);
+  letter-spacing: .06em; text-transform: uppercase;
+  margin-top: .35rem;
+}
+
+/* ── contact ── */
+.contact-statement {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -.01em;
+  color: var(--ink);
+  margin-bottom: 1.75rem;
+  max-width: 560px;
+}
+.contact-statement em { font-style: italic; color: var(--mid) }
+.contact-links { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem }
+.c-link {
+  font-size: 13.5px; color: var(--mid);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .9rem 0;
+  border-bottom: 1px solid var(--line);
+  transition: color .15s, padding .2s;
+}
+.c-link:hover { color: var(--ink); padding-left: .4rem }
+.c-link .handle { font-family: var(--font-mono); font-size: 11px; color: var(--faint) }
+.c-link:hover .handle { color: var(--mid) }
+
+/* ── contact form ── */
+.contact-form-wrap {
+  margin-top: 2.75rem;
+  padding-top: 2rem;
+  border-top: 1px solid color-mix(in srgb, var(--line) 55%, transparent);
+}
+.contact-form-label {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 1.25rem;
+  display: flex; align-items: center; gap: .6rem;
+}
+.contact-form-label::before {
+  content: ""; width: 18px; height: 1px; background: var(--faint);
+}
+#contact-form { display: flex; flex-direction: column; gap: 1.1rem; max-width: 520px }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem }
+.form-group { display: flex; flex-direction: column; gap: .35rem }
+#contact-form label {
+  font-family: var(--font-mono);
+  font-size: 10.5px; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--faint);
+}
+#contact-form input, #contact-form textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  padding: .55rem 0;
+  font: inherit; font-size: 14px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color .2s;
+  resize: none;
+  width: 100%;
+}
+#contact-form input::placeholder, #contact-form textarea::placeholder { color: var(--faint) }
+#contact-form input:focus, #contact-form textarea:focus { border-color: var(--ink) }
+#contact-form textarea { min-height: 110px }
+.form-msg {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: .02em;
+  color: var(--mid);
+  display: none;
+  padding: .2rem 0;
+}
+.form-msg.show { display: block }
+.form-msg.err { color: #c04b3a }
+.submit-btn {
+  font-family: var(--font-sans);
+  font-size: 13px; font-weight: 500;
+  color: var(--bg);
+  background: var(--ink);
+  padding: .75rem 1.5rem;
+  border-radius: 4px;
+  align-self: flex-start;
+  transition: opacity .2s, transform .2s;
+}
+.submit-btn:hover:not(:disabled) { opacity: .88; transform: translateY(-1px) }
+.submit-btn:disabled { opacity: .4; cursor: not-allowed }
+
+/* ── footer ── */
+footer {
+  border-top: 1px solid color-mix(in srgb, var(--line) 50%, transparent);
+  padding: 2rem 0;
+  margin-top: 0;
+  position: relative; z-index: 2;
+  background: color-mix(in srgb, var(--bg) 68%, transparent);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+}
+.footer-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: .75rem;
+}
+.footer-note {
+  font-family: var(--font-mono);
+  font-size: 11px; color: var(--faint);
+  letter-spacing: .02em;
+}
+.footer-note a { transition: color .15s }
+.footer-note a:hover { color: var(--ink) }
+.footer-now {
+  font-family: var(--font-mono);
+  font-size: 11px; color: var(--faint);
+  display: inline-flex; align-items: center; gap: .5rem;
+}
+.footer-now .fdot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #3dbc5e;
+  animation: pulse 2.4s infinite;
+}
+
+/* ── reveal ── */
+.reveal {
+  opacity: 0; transform: translateY(14px);
+  transition: opacity .6s cubic-bezier(.2,.7,.3,1), transform .6s cubic-bezier(.2,.7,.3,1);
+}
+.reveal.visible { opacity: 1; transform: none }
+
+/* ── responsive ── */
+@media (max-width: 640px) {
+  nav { padding: 0 1.25rem }
+  .page { padding: 0 1.25rem }
+  .hero-inner { padding: 0 1.25rem }
+  .footer-inner { padding: 0 1.25rem }
+  .nav-right { gap: 1rem }
+  .nav-right a:nth-child(2),
+  .nav-right a:nth-child(3) { display: none }
+
+  /* mobile hero: portrait photo fills page, content pushed down so face is visible first */
+  #hero { min-height: 100vh; padding-top: calc(var(--nav-h) + 2rem); padding-bottom: 3rem }
+  .hero-inner { margin-top: 42vh }
+  .hero-avatar { width: 116px; height: 116px; margin-bottom: 1.5rem; border-width: 3px }
+  .form-row { grid-template-columns: 1fr }
+  .page { border-radius: 18px 18px 0 0 }
+
+  .exp-item { grid-template-columns: 1fr }
+  .exp-meta { font-size: 10.5px; margin-bottom: .3rem }
+  .skills-grid, .cert-grid { grid-template-columns: 1fr }
+  .skill-group:nth-child(odd) { padding-right: 0; border-right: none }
+  .skill-group:nth-child(even) { padding-left: 0 }
+  .contact-links { grid-template-columns: 1fr }
+  .project-item { grid-template-columns: 56px 1fr auto; padding: 1rem }
+  .project-thumb { width: 56px; height: 44px; font-size: 18px }
+  .marquee { margin: 0 calc(-1 * 1.25rem) }
+  .edu-stats { gap: 1.25rem; flex-wrap: wrap }
+}
+</style>
+</head>
+<body>
+
+<!-- Page-wide fixed background photo -->
+<div class="site-bg" aria-hidden="true">
+  <picture>
+    <source media="(max-width: 640px)" srcset="DSC_0688%20(1)(2).jpg">
+    <img src="DSC_0688%20(1)(1).jpg" alt="">
+  </picture>
+</div>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero"><span class="dot"></span>Voon Yan</a>
+    <div class="nav-right">
+      <a href="#about">about</a>
+      <a href="#experience">work</a>
+      <a href="#projects">projects</a>
+      <a href="#contact">contact</a>
+      <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO (transparent — photo shows through from .site-bg) -->
+<section id="hero">
+  <div class="hero-inner">
+    <a class="hero-avatar" href="#about" aria-label="Voon Yan Kho profile photo">
+      <img src="profilepic.jpg" alt="Voon Yan Kho">
+    </a>
+    <div class="hero-badge"><span class="bdot"></span>Open to graduate roles · 2026</div>
+    <h1 class="hero-name">Voon Yan Kho,<br><em>data scientist.</em></h1>
+    <p class="hero-bio">
+      Final-year <strong>Data Science &amp; Computer Science</strong> double major at the University of Western Australia. I work at the intersection of machine learning, medical research, and social impact — usually with a Jupyter notebook open. Based in Perth, WA.
+    </p>
+    <div class="rotate-line">
+      <span class="rot-label">currently focused on &nbsp;→</span>
+      <span class="rotate-wrap">
+        <span class="rotate-stack">
+          <span>dbt &amp; Snowflake pipelines</span>
+          <span>diffusion MRI tractography</span>
+          <span>deep learning in PyTorch</span>
+          <span>dbt &amp; Snowflake pipelines</span>
+        </span>
+      </span>
+    </div>
+    <div class="hero-links">
+      <a class="hero-link" href="https://www.kaggle.com/voonyan/code" target="_blank" rel="noopener">Kaggle <span class="arr">↗</span></a>
+      <a class="hero-link" href="https://www.linkedin.com/in/voonyan" target="_blank" rel="noopener">LinkedIn <span class="arr">↗</span></a>
+      <a class="hero-link" href="https://drive.google.com/file/d/1qeZfInw2t0iDZUg8icV48hAz9--mmGfG/view?usp=sharing" target="_blank" rel="noopener">Resume <span class="arr">↗</span></a>
+      <a class="hero-link" href="mailto:wenyan1029@gmail.com">Email <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="page">
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="section-header">
+      <span class="section-title">About</span>
+    </div>
+    <p class="statement reveal">
+      I build with data — from <em>clinical MRI scans</em> to <em>charity registries</em> to <em>health-insurance analytics</em>. I like problems where the answer changes how a person, a policy, or a pipeline actually behaves.
+    </p>
+    <div class="about-text reveal">
+      <p>I'm a double major in <strong>Data Science and Computer Science</strong> at UWA (graduating mid-2026). I've held research and engineering roles at <strong>HBF</strong>, <strong>KEMH's Neonatal Health team</strong>, the <strong>UWA Centre for Social Impact</strong>, and the <strong>Harry Perkins Institute of Medical Research</strong> — spanning dbt &amp; Snowflake, diffusion MRI, web scraping, and single-cell RNA sequencing.</p>
+      <p>I hold <strong>8+ IBM Professional Certifications</strong> across AI engineering, deep learning (Keras, TensorFlow, PyTorch), and business intelligence. I speak English, Chinese, and Malay. Outside work: volunteering, travel, roadtrips, and good coffee.</p>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section">
+    <div class="section-header">
+      <span class="section-title">Education</span>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-top">
+        <div>
+          <div class="edu-school">The University of Western Australia</div>
+          <div class="edu-degree">Bachelor of Science — Data Science &amp; Computer Science (double major)</div>
+        </div>
+        <div class="edu-when">Jul 2024 – Jun 2026</div>
+      </div>
+      <div class="edu-stats">
+        <div class="edu-stat"><div class="n">81.4</div><div class="l">WAM</div></div>
+        <div class="edu-stat"><div class="n">6.67<span style="color:var(--faint);font-size:.7em"> / 7</span></div><div class="l">GPA</div></div>
+        <div class="edu-stat"><div class="n">10+</div><div class="l">IBM Certs</div></div>
+        <div class="edu-stat"><div class="n">3</div><div class="l">Languages</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section">
+    <div class="section-header">
+      <span class="section-title">Experience</span>
+      <span class="section-more" style="cursor:default">four roles ·&nbsp;2024 → 2026</span>
+    </div>
+    <div class="exp-list">
+
+      <div class="exp-item reveal" style="--exp-color:var(--c-coral)">
+        <div class="exp-meta">Mar 2026 — Apr 2026<br>Perth, WA</div>
+        <div class="exp-body">
+          <div class="exp-role"><span class="emo">🏥</span>Data Engineering Intern</div>
+          <div class="exp-org">HBF Health <em>· health insurance</em></div>
+          <div class="exp-desc">Built and maintained analytical datasets with <strong>dbt</strong> and <strong>Snowflake</strong>. Diagnosed and fixed failing dbt test cases, improving pipeline reliability for the data engineering team.</div>
+          <div class="exp-tags"><span class="tag">dbt</span><span class="tag">Snowflake</span><span class="tag">SQL</span><span class="tag">Data Modelling</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal" style="--exp-color:var(--c-rose)">
+        <div class="exp-meta">Nov 2025 — Feb 2026<br>Subiaco, WA</div>
+        <div class="exp-body">
+          <div class="exp-role"><span class="emo">🧠</span>Research Assistant — Data Science</div>
+          <div class="exp-org">KEMH Neonatal Health Team <em>· women &amp; newborn hospital</em></div>
+          <div class="exp-desc">Diffusion MRI tractography of the preterm infant brain in Python &amp; <strong>DIPY</strong>. Ran the full preprocessing stack — denoising, Gibbs ringing &amp; eddy correction, bias-field correction, brain masking, response-function estimation, and CSD for fiber orientation.</div>
+          <div class="exp-tags"><span class="tag">DIPY</span><span class="tag">MRI</span><span class="tag">Python</span><span class="tag">Neuroscience</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal" style="--exp-color:var(--c-sage)">
+        <div class="exp-meta">Feb 2025 — May 2025<br>Crawley, WA</div>
+        <div class="exp-body">
+          <div class="exp-role"><span class="emo">🌱</span>Research Intern — Data Science</div>
+          <div class="exp-org">UWA Centre for Social Impact (CSI) <em>· research institute</em></div>
+          <div class="exp-desc">Cleaned survey datasets, built Power BI dashboards for social-impact metrics, implemented <strong>Whisper / WhisperX</strong> for speech-to-text, and scraped a dataset of <strong>65,000+ Australian charities</strong> and not-for-profits.</div>
+          <div class="exp-tags"><span class="tag">Power BI</span><span class="tag">Whisper</span><span class="tag">Web Scraping</span><span class="tag">EDA</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal" style="--exp-color:var(--c-lilac)">
+        <div class="exp-meta">Nov 2024 — Jan 2025<br>Remote</div>
+        <div class="exp-body">
+          <div class="exp-role"><span class="emo">🧬</span>Research Assistant — Data Science</div>
+          <div class="exp-org">Harry Perkins Institute of Medical Research <em>· biomedical</em></div>
+          <div class="exp-desc">Single-cell RNA sequencing (<strong>scRNA-seq</strong>) analysis in Seurat / R. Performed Hallmark GSEA and GO pathway analysis to study differential expression in endothelial cells, and produced ggplot2 reports for collaborators.</div>
+          <div class="exp-tags"><span class="tag">R</span><span class="tag">Seurat</span><span class="tag">scRNA-seq</span><span class="tag">ggplot2</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="section-header">
+      <span class="section-title">Kaggle Projects</span>
+      <a class="section-more" href="https://www.kaggle.com/voonyan/code" target="_blank" rel="noopener">all projects ↗</a>
+    </div>
+    <div class="project-list">
+
+      <div class="project-item reveal" style="--p-color:var(--c-sage)" onclick="window.open('https://www.kaggle.com/code/voonyan/apartment-prices-prediction-poland-student-study','_blank')">
+        <div class="project-thumb">🏘️</div>
+        <div class="project-body">
+          <div class="project-name">Apartment Prices Prediction — Poland</div>
+          <div class="project-desc">Trained and compared multiple regression models to predict apartment prices across Polish cities. Full EDA, feature engineering, and model evaluation — my first end-to-end ML project.</div>
+          <div class="project-meta">Regression · scikit-learn · EDA</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+      <div class="project-item reveal" style="--p-color:var(--c-peach)" onclick="window.open('https://www.kaggle.com/code/voonyan/income-by-education-levels-in-australia-and-canada','_blank')">
+        <div class="project-thumb">📈</div>
+        <div class="project-body">
+          <div class="project-name">Income by Education — Australia &amp; Canada</div>
+          <div class="project-desc">Cross-country comparative analysis of education ROI. Australia offers a higher return on education investment than Canada, especially at higher qualification levels.</div>
+          <div class="project-meta">Data Analytics · Pandas · Seaborn</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+      <div class="project-item reveal" style="--p-color:var(--c-sky)" onclick="window.open('https://www.kaggle.com/code/voonyan/student-performance-prediction','_blank')">
+        <div class="project-thumb">🎓</div>
+        <div class="project-body">
+          <div class="project-name">Student Performance Prediction</div>
+          <div class="project-desc">Predicted students' final grades from prior performance and behavioural factors. Linear regression quietly outperformed more complex models — a useful reminder.</div>
+          <div class="project-meta">Regression · Feature Engineering</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+      <div class="project-item reveal" style="--p-color:var(--c-lilac)" onclick="window.open('https://www.kaggle.com/code/voonyan/classify-waste-products-using-tl-ft-final-project','_blank')">
+        <div class="project-thumb">♻️</div>
+        <div class="project-body">
+          <div class="project-name">Waste Classification — IBM Deep Learning Capstone</div>
+          <div class="project-desc">Automated waste classifier separating recyclable from organic waste using transfer learning and fine-tuning in Keras &amp; TensorFlow. Final project for the IBM AI Capstone.</div>
+          <div class="project-meta">Deep Learning · Keras · Transfer Learning</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+      <div class="project-item reveal" style="--p-color:var(--c-gold)" onclick="window.open('https://www.kaggle.com/voonyan/code','_blank')">
+        <div class="project-thumb">🎨</div>
+        <div class="project-body">
+          <div class="project-name">Anime Image Classification — CNN</div>
+          <div class="project-desc">Built and trained a convolutional neural network from scratch in PyTorch for multi-class anime image classification. Practice project from the IBM PyTorch course.</div>
+          <div class="project-meta">Deep Learning · PyTorch · CNN</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <div class="section-header">
+      <span class="section-title">Skills</span>
+    </div>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-chip">Python</span>
+        <span class="marquee-chip">R</span>
+        <span class="marquee-chip">SQL</span>
+        <span class="marquee-chip">Java</span>
+        <span class="marquee-chip">C++</span>
+        <span class="marquee-chip">C</span>
+        <span class="marquee-chip">PyTorch</span>
+        <span class="marquee-chip">TensorFlow</span>
+        <span class="marquee-chip">Keras</span>
+        <span class="marquee-chip">scikit-learn</span>
+        <span class="marquee-chip">Pandas</span>
+        <span class="marquee-chip">NumPy</span>
+        <span class="marquee-chip">Seaborn</span>
+        <span class="marquee-chip">Matplotlib</span>
+        <span class="marquee-chip">dbt</span>
+        <span class="marquee-chip">Snowflake</span>
+        <span class="marquee-chip">PostgreSQL</span>
+        <span class="marquee-chip">MySQL</span>
+        <span class="marquee-chip">IBM Cloud</span>
+        <span class="marquee-chip">Apache HBase</span>
+        <span class="marquee-chip">Hive</span>
+        <span class="marquee-chip">Databricks</span>
+        <span class="marquee-chip">PySpark</span>
+        <span class="marquee-chip">DIPY</span>
+        <span class="marquee-chip">Seurat</span>
+        <span class="marquee-chip">Tableau</span>
+        <span class="marquee-chip">Power BI</span>
+        <span class="marquee-chip">IBM Cognos</span>
+        <span class="marquee-chip">Whisper</span>
+        <span class="marquee-chip">Excel</span>
+        <!-- duplicate for seamless loop -->
+        <span class="marquee-chip">Python</span>
+        <span class="marquee-chip">R</span>
+        <span class="marquee-chip">SQL</span>
+        <span class="marquee-chip">Java</span>
+        <span class="marquee-chip">C++</span>
+        <span class="marquee-chip">C</span>
+        <span class="marquee-chip">PyTorch</span>
+        <span class="marquee-chip">TensorFlow</span>
+        <span class="marquee-chip">Keras</span>
+        <span class="marquee-chip">scikit-learn</span>
+        <span class="marquee-chip">Pandas</span>
+        <span class="marquee-chip">NumPy</span>
+        <span class="marquee-chip">Seaborn</span>
+        <span class="marquee-chip">Matplotlib</span>
+        <span class="marquee-chip">dbt</span>
+        <span class="marquee-chip">Snowflake</span>
+        <span class="marquee-chip">PostgreSQL</span>
+        <span class="marquee-chip">MySQL</span>
+        <span class="marquee-chip">IBM Cloud</span>
+        <span class="marquee-chip">Apache HBase</span>
+        <span class="marquee-chip">Hive</span>
+        <span class="marquee-chip">Databricks</span>
+        <span class="marquee-chip">PySpark</span>
+        <span class="marquee-chip">DIPY</span>
+        <span class="marquee-chip">Seurat</span>
+        <span class="marquee-chip">Tableau</span>
+        <span class="marquee-chip">Power BI</span>
+        <span class="marquee-chip">IBM Cognos</span>
+        <span class="marquee-chip">Whisper</span>
+        <span class="marquee-chip">Excel</span>
+      </div>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-group reveal">
+        <div class="skill-name"><span class="emo">🤖</span>Machine Learning</div>
+        <div class="skill-list">scikit-learn · Bayesian statistics · regression · classification · cross-validation · hyperparameter tuning</div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-name"><span class="emo">🧠</span>Deep Learning</div>
+        <div class="skill-list">PyTorch · Keras · TensorFlow · CNNs · transfer learning · fine-tuning · neural networks</div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-name"><span class="emo">📊</span>Data Analytics &amp; EDA</div>
+        <div class="skill-list">Pandas · NumPy · Seaborn · Matplotlib · ggplot2 · data cleaning · feature engineering</div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-name"><span class="emo">⚙️</span>Data Engineering</div>
+        <div class="skill-list">dbt · Snowflake · ETL · PySpark · Databricks · IBM Cloud · Apache HBase · Hive</div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-name"><span class="emo">🗄️</span>Databases</div>
+        <div class="skill-list">SQL · PostgreSQL · MySQL · query optimisation · data modelling</div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-name"><span class="emo">📈</span>Business Intelligence</div>
+        <div class="skill-list">Tableau · Power BI · IBM Cognos Analytics · dashboard design · data storytelling</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" class="section">
+    <div class="section-header">
+      <span class="section-title">Certifications</span>
+      <span class="section-more" style="cursor:default">IBM · Coursera</span>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-item reveal"><span class="cert-name">Generative AI &amp; LLMs: Architecture &amp; Data Prep</span><span class="cert-year">Feb 2026</span></div>
+      <div class="cert-item reveal"><span class="cert-name">AI Capstone Project with Deep Learning</span><span class="cert-year">Jul 2025</span></div>
+      <div class="cert-item reveal"><span class="cert-name">Deep Learning with PyTorch</span><span class="cert-year">Jul 2025</span></div>
+      <div class="cert-item reveal"><span class="cert-name">Introduction to Neural Networks &amp; PyTorch</span><span class="cert-year">Jun 2025</span></div>
+      <div class="cert-item reveal"><span class="cert-name">Deep Learning with Keras &amp; TensorFlow</span><span class="cert-year">Dec 2024</span></div>
+      <div class="cert-item reveal"><span class="cert-name">Introduction to Deep Learning &amp; Neural Networks (Keras)</span><span class="cert-year">Nov 2024</span></div>
+      <div class="cert-item reveal"><span class="cert-name">Practera Study Australia Industry Experience</span><span class="cert-year">Oct 2024</span></div>
+      <div class="cert-item reveal"><span class="cert-name">IBM Business Intelligence (BI) Analyst Specialization</span><span class="cert-year">Jul 2024</span></div>
+      <div class="cert-item reveal"><span class="cert-name">Oracle Java Foundation</span><span class="cert-year">Jul 2023</span></div>
+      <div class="cert-item reveal"><span class="cert-name">Salesforce Lightning Reports &amp; Dashboards Specialist</span><span class="cert-year">Jun 2023</span></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="section-header">
+      <span class="section-title">Contact</span>
+    </div>
+    <p class="contact-statement reveal">
+      Open to graduate roles, research collaborations, and conversations about data. <em>Say hi.</em>
+    </p>
+    <div class="contact-links">
+      <a class="c-link" href="mailto:wenyan1029@gmail.com">
+        <span>Email</span>
+        <span class="handle">wenyan1029@gmail.com ↗</span>
+      </a>
+      <a class="c-link" href="https://www.linkedin.com/in/voonyan" target="_blank" rel="noopener">
+        <span>LinkedIn</span>
+        <span class="handle">in/voonyan ↗</span>
+      </a>
+      <a class="c-link" href="https://www.kaggle.com/voonyan/code" target="_blank" rel="noopener">
+        <span>Kaggle</span>
+        <span class="handle">/voonyan ↗</span>
+      </a>
+      <a class="c-link" href="https://drive.google.com/file/d/1qeZfInw2t0iDZUg8icV48hAz9--mmGfG/view?usp=sharing" target="_blank" rel="noopener">
+        <span>Resume PDF</span>
+        <span class="handle">Google Drive ↗</span>
+      </a>
+    </div>
+
+    <!--
+      Contact form.
+      Works out of the box — without setup, it opens your email client pre-filled.
+      To receive messages directly in your inbox without an email client prompt,
+      sign up at https://formspree.io (free) and replace YOUR_FORM_ID in the action below.
+    -->
+    <div class="contact-form-wrap reveal">
+      <div class="contact-form-label">Or send a message</div>
+      <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-name">Name</label>
+            <input id="f-name" type="text" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="f-email">Email</label>
+            <input id="f-email" type="email" name="email" placeholder="you@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="f-msg">Message</label>
+          <textarea id="f-msg" name="message" placeholder="Say hi…" required></textarea>
+        </div>
+        <div class="form-msg" id="form-msg" role="status" aria-live="polite"></div>
+        <button class="submit-btn" type="submit">Send <span aria-hidden="true">→</span></button>
+      </form>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-note">© 2026 Voon Yan Kho · <a href="https://voonyan.carrd.co/" target="_blank" rel="noopener">previous site</a></span>
+    <span class="footer-now"><span class="fdot"></span>Perth, WA · available 2026</span>
+  </div>
+</footer>
+
+<script>
+/* theme toggle */
+(function(){
+  const btn = document.getElementById('theme-btn');
+  const html = document.documentElement;
+  const saved = localStorage.getItem('vk-theme') ||
+                (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  html.setAttribute('data-theme', saved);
+  btn.textContent = saved === 'dark' ? '☀' : '☾';
+  btn.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('vk-theme', next);
+    btn.textContent = next === 'dark' ? '☀' : '☾';
+  });
+})();
+
+/* nav border on scroll */
+window.addEventListener('scroll', () => {
+  document.getElementById('main-nav').classList.toggle('scrolled', scrollY > 8);
+}, { passive: true });
+
+/* scroll reveal */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+}, { threshold: .08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* stagger within sections */
+document.querySelectorAll('.exp-item, .project-item, .cert-item, .skill-group').forEach((el, i) => {
+  el.style.transitionDelay = `${(i % 6) * 60}ms`;
+});
+
+/* contact form — uses Formspree if configured, otherwise falls back to mailto */
+(function(){
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+  const btn = form.querySelector('.submit-btn');
+  const msg = document.getElementById('form-msg');
+  const OWNER_EMAIL = 'wenyan1029@gmail.com';
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const name = (data.get('name') || '').toString().trim();
+    const email = (data.get('email') || '').toString().trim();
+    const message = (data.get('message') || '').toString().trim();
+
+    // No Formspree set up yet → open the user's email client prefilled
+    if (form.action.includes('YOUR_FORM_ID')) {
+      const subject = encodeURIComponent(`Portfolio message from ${name}`);
+      const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+      window.location.href = `mailto:${OWNER_EMAIL}?subject=${subject}&body=${body}`;
+      msg.textContent = 'Opening your email app…';
+      msg.className = 'form-msg show';
+      return;
+    }
+
+    // Formspree submission
+    btn.textContent = 'Sending…'; btn.disabled = true;
+    msg.className = 'form-msg';
+    try {
+      const r = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' }
+      });
+      if (!r.ok) throw new Error();
+      msg.textContent = "Sent! I'll get back to you soon.";
+      msg.className = 'form-msg show';
+      form.reset();
+    } catch {
+      msg.textContent = 'Something went wrong — email me directly at ' + OWNER_EMAIL;
+      msg.className = 'form-msg show err';
+    }
+    btn.innerHTML = 'Send <span aria-hidden="true">→</span>';
+    btn.disabled = false;
+  });
+})();
+</script>
+</body>
+</html>
