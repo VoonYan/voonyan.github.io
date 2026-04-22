@@ -747,6 +747,87 @@ footer {
     </div>
   </section>
 
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="section-header">
+      <span class="section-title">Kaggle Projects</span>
+      <a class="section-more" href="https://www.kaggle.com/voonyan/code" target="_blank" rel="noopener">all projects ↗</a>
+    </div>
+    <div class="project-list">
+
+      <div class="project-item reveal" style="--p-color:var(--c-mint)" onclick="window.open('https://www.kaggle.com/code/voonyan/titanic-machine-learning-from-disaster','_blank')">
+        <div class="project-thumb">🚢</div>
+        <div class="project-body">
+          <div class="project-name">Titanic — Machine Learning from Disaster</div>
+          <div class="project-desc">End-to-end pipeline on the Kaggle classic: imputed Embarked / Age / Cabin, handled outliers, engineered features (log-Fare, Sex × Pclass, Age × Pclass, FamilySize, IsAlone), and benchmarked Logistic Regression, Decision Tree, Random Forest &amp; XGBoost. <strong>XGBoost</strong> won on ROC-AUC.</div>
+          <div class="project-meta">Classification · XGBoost · Feature Engineering</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+      <div class="project-item reveal" style="--p-color:var(--c-rose)" onclick="window.open('https://www.kaggle.com/code/voonyan/deep-neural-network-breast-cancer-classification','_blank')">
+        <div class="project-thumb">🎗️</div>
+        <div class="project-body">
+          <div class="project-name">Breast Cancer Classification — Deep Neural Network</div>
+          <div class="project-desc">PyTorch feed-forward network (30 → 64 → 2) on the Breast Cancer Wisconsin Diagnostic dataset. Balanced the classes to 200 / 200, standardised 30 features, and trained with <strong>Adam</strong> + cross-entropy over 10 epochs — final test loss ≈ 0.09. Ran ablations on SGD vs Adam, hidden-unit counts, and generalised the pipeline to the Iris dataset.</div>
+          <div class="project-meta">Deep Learning · PyTorch · Medical Classification</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+      <div class="project-item reveal" style="--p-color:var(--c-sage)" onclick="window.open('https://www.kaggle.com/code/voonyan/apartment-prices-prediction-poland-student-study','_blank')">
+        <div class="project-thumb">🏘️</div>
+        <div class="project-body">
+          <div class="project-name">Apartment Prices Prediction — Poland</div>
+          <div class="project-desc">Trained and compared multiple regression models to predict apartment prices across Polish cities. Full EDA, feature engineering, and model evaluation — my first end-to-end ML project.</div>
+          <div class="project-meta">Regression · scikit-learn · EDA</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+      <div class="project-item reveal" style="--p-color:var(--c-peach)" onclick="window.open('https://www.kaggle.com/code/voonyan/income-by-education-levels-in-australia-and-canada','_blank')">
+        <div class="project-thumb">📈</div>
+        <div class="project-body">
+          <div class="project-name">Income by Education — Australia &amp; Canada</div>
+          <div class="project-desc">Cross-country comparative analysis of education ROI. Australia offers a higher return on education investment than Canada, especially at higher qualification levels.</div>
+          <div class="project-meta">Data Analytics · Pandas · Seaborn</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+      <div class="project-item reveal" style="--p-color:var(--c-sky)" onclick="window.open('https://www.kaggle.com/code/voonyan/student-performance-prediction','_blank')">
+        <div class="project-thumb">🎓</div>
+        <div class="project-body">
+          <div class="project-name">Student Performance Prediction</div>
+          <div class="project-desc">Predicted students' final grades from prior performance and behavioural factors. Linear regression quietly outperformed more complex models — a useful reminder.</div>
+          <div class="project-meta">Regression · Feature Engineering</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+      <div class="project-item reveal" style="--p-color:var(--c-lilac)" onclick="window.open('https://www.kaggle.com/code/voonyan/classify-waste-products-using-tl-ft-final-project','_blank')">
+        <div class="project-thumb">♻️</div>
+        <div class="project-body">
+          <div class="project-name">Waste Classification — IBM Deep Learning Capstone</div>
+          <div class="project-desc">Automated waste classifier separating recyclable from organic waste using transfer learning and fine-tuning in Keras &amp; TensorFlow. Final project for the IBM AI Capstone.</div>
+          <div class="project-meta">Deep Learning · Keras · Transfer Learning</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+      <div class="project-item reveal" style="--p-color:var(--c-gold)" onclick="window.open('https://www.kaggle.com/voonyan/code','_blank')">
+        <div class="project-thumb">🎨</div>
+        <div class="project-body">
+          <div class="project-name">Anime Image Classification — CNN</div>
+          <div class="project-desc">Built and trained a convolutional neural network from scratch in PyTorch for multi-class anime image classification. Practice project from the IBM PyTorch course.</div>
+          <div class="project-meta">Deep Learning · PyTorch · CNN</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- EDUCATION -->
   <section id="education" class="section">
     <div class="section-header">
@@ -815,77 +896,6 @@ footer {
           <div class="exp-desc">Single-cell RNA sequencing (<strong>scRNA-seq</strong>) analysis in Seurat / R. Performed Hallmark GSEA and GO pathway analysis to study differential expression in endothelial cells, and produced ggplot2 reports for collaborators.</div>
           <div class="exp-tags"><span class="tag">R</span><span class="tag">Seurat</span><span class="tag">scRNA-seq</span><span class="tag">ggplot2</span></div>
         </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="section">
-    <div class="section-header">
-      <span class="section-title">Kaggle Projects</span>
-      <a class="section-more" href="https://www.kaggle.com/voonyan/code" target="_blank" rel="noopener">all projects ↗</a>
-    </div>
-    <div class="project-list">
-
-      <div class="project-item reveal" style="--p-color:var(--c-mint)" onclick="window.open('https://www.kaggle.com/code/voonyan/titanic-machine-learning-from-disaster','_blank')">
-        <div class="project-thumb">🚢</div>
-        <div class="project-body">
-          <div class="project-name">Titanic — Machine Learning from Disaster</div>
-          <div class="project-desc">End-to-end pipeline on the Kaggle classic: imputed Embarked / Age / Cabin, handled outliers, engineered features (log-Fare, Sex × Pclass, Age × Pclass, FamilySize, IsAlone), and benchmarked Logistic Regression, Decision Tree, Random Forest &amp; XGBoost. <strong>XGBoost</strong> won on ROC-AUC.</div>
-          <div class="project-meta">Classification · XGBoost · Feature Engineering</div>
-        </div>
-        <div class="project-arr">↗</div>
-      </div>
-
-      <div class="project-item reveal" style="--p-color:var(--c-sage)" onclick="window.open('https://www.kaggle.com/code/voonyan/apartment-prices-prediction-poland-student-study','_blank')">
-        <div class="project-thumb">🏘️</div>
-        <div class="project-body">
-          <div class="project-name">Apartment Prices Prediction — Poland</div>
-          <div class="project-desc">Trained and compared multiple regression models to predict apartment prices across Polish cities. Full EDA, feature engineering, and model evaluation — my first end-to-end ML project.</div>
-          <div class="project-meta">Regression · scikit-learn · EDA</div>
-        </div>
-        <div class="project-arr">↗</div>
-      </div>
-
-      <div class="project-item reveal" style="--p-color:var(--c-peach)" onclick="window.open('https://www.kaggle.com/code/voonyan/income-by-education-levels-in-australia-and-canada','_blank')">
-        <div class="project-thumb">📈</div>
-        <div class="project-body">
-          <div class="project-name">Income by Education — Australia &amp; Canada</div>
-          <div class="project-desc">Cross-country comparative analysis of education ROI. Australia offers a higher return on education investment than Canada, especially at higher qualification levels.</div>
-          <div class="project-meta">Data Analytics · Pandas · Seaborn</div>
-        </div>
-        <div class="project-arr">↗</div>
-      </div>
-
-      <div class="project-item reveal" style="--p-color:var(--c-sky)" onclick="window.open('https://www.kaggle.com/code/voonyan/student-performance-prediction','_blank')">
-        <div class="project-thumb">🎓</div>
-        <div class="project-body">
-          <div class="project-name">Student Performance Prediction</div>
-          <div class="project-desc">Predicted students' final grades from prior performance and behavioural factors. Linear regression quietly outperformed more complex models — a useful reminder.</div>
-          <div class="project-meta">Regression · Feature Engineering</div>
-        </div>
-        <div class="project-arr">↗</div>
-      </div>
-
-      <div class="project-item reveal" style="--p-color:var(--c-lilac)" onclick="window.open('https://www.kaggle.com/code/voonyan/classify-waste-products-using-tl-ft-final-project','_blank')">
-        <div class="project-thumb">♻️</div>
-        <div class="project-body">
-          <div class="project-name">Waste Classification — IBM Deep Learning Capstone</div>
-          <div class="project-desc">Automated waste classifier separating recyclable from organic waste using transfer learning and fine-tuning in Keras &amp; TensorFlow. Final project for the IBM AI Capstone.</div>
-          <div class="project-meta">Deep Learning · Keras · Transfer Learning</div>
-        </div>
-        <div class="project-arr">↗</div>
-      </div>
-
-      <div class="project-item reveal" style="--p-color:var(--c-gold)" onclick="window.open('https://www.kaggle.com/voonyan/code','_blank')">
-        <div class="project-thumb">🎨</div>
-        <div class="project-body">
-          <div class="project-name">Anime Image Classification — CNN</div>
-          <div class="project-desc">Built and trained a convolutional neural network from scratch in PyTorch for multi-class anime image classification. Practice project from the IBM PyTorch course.</div>
-          <div class="project-meta">Deep Learning · PyTorch · CNN</div>
-        </div>
-        <div class="project-arr">↗</div>
       </div>
 
     </div>
