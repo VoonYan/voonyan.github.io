@@ -29,6 +29,7 @@
   --c-rose:    #efd6d8;
   --c-mint:    #d3e6dd;
   --c-coral:   #f1c8b6;
+  --c-plum:    #dcd0e0;
 
   --font-sans:  'DM Sans', system-ui, -apple-system, sans-serif;
   --font-serif: 'Instrument Serif', 'DM Serif Display', Georgia, serif;
@@ -54,6 +55,7 @@
   --c-rose:    #362325;
   --c-mint:    #1e3129;
   --c-coral:   #3a2620;
+  --c-plum:    #2d2233;
 }
 
 /* ── reset ── */
@@ -781,6 +783,16 @@ footer {
           <div class="project-name">Red Wine Quality Prediction</div>
           <div class="project-desc">Binary classification on the UCI Vinho Verde dataset (quality ≥ 7 = good). Cleaned 240 duplicates, log-transformed skewed physicochemical features, and benchmarked <strong>Logistic Regression, SVM, Decision Tree, Random Forest, and XGBoost</strong> across full / balanced / minimal feature sets with class-balanced weights. Random Forest on the minimal set won — leaner features, same accuracy, less overfit.</div>
           <div class="project-meta">Classification · XGBoost · Model Comparison</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+      <div class="project-item reveal" style="--p-color:var(--c-plum)" onclick="window.open('https://www.kaggle.com/code/voonyan/red-wine-quality-prediction-with-deep-learning','_blank')">
+        <div class="project-thumb">🧠</div>
+        <div class="project-body">
+          <div class="project-name">Red Wine Quality — Deep Learning Extension</div>
+          <div class="project-desc">Follow-up to the classical ML study, now with <strong>TensorFlow / Keras</strong>. Built a Dense 64 → Dropout → 32 → Dropout → Softmax MLP with Adam + EarlyStopping (patience 12) and class-balanced weights. Trained on both the <em>full 6-class</em> quality target and a regrouped <em>3-class</em> (low / medium / high) target across full / balanced / minimal feature sets — the 3-class full model reached ≈ 0.66 accuracy, and misclassifications clustered around adjacent quality levels, confirming the target's ordinal structure.</div>
+          <div class="project-meta">Deep Learning · TensorFlow · Multiclass</div>
         </div>
         <div class="project-arr">↗</div>
       </div>
