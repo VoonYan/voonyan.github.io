@@ -752,10 +752,50 @@ footer {
   <!-- PROJECTS -->
   <section id="projects" class="section">
     <div class="section-header">
-      <span class="section-title">Kaggle Projects</span>
+      <span class="section-title">Projects</span>
       <a class="section-more" href="https://www.kaggle.com/voonyan/code" target="_blank" rel="noopener">all projects ↗</a>
     </div>
     <div class="project-list">
+
+      <div class="project-item reveal" style="--p-color:var(--c-sky)" onclick="window.open('https://github.com/VoonYan/crypto_market_data_pipeline','_blank')">
+        <div class="project-thumb">⚙️</div>
+        <div class="project-body">
+          <div class="project-name">Crypto Market Data Pipeline — End-to-End ELT</div>
+          <div class="project-desc">A self-updating data engineering project: pulls hourly crypto prices from the CoinGecko API with incremental, watermark-based ingestion, lands immutable raw parquet, then models it into a warehouse with <strong>dbt on DuckDB</strong> — staging, hourly-to-daily OHLCV, and marts for returns, rolling volatility, drawdown &amp; pairwise correlations. 18 dbt tests + pytest gate every layer, and a <strong>GitHub Actions</strong> cron rebuilds and commits fresh data daily, feeding a live <strong>Streamlit</strong> dashboard.</div>
+          <div class="project-meta">Data Engineering · dbt · DuckDB · GitHub Actions</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+      <div class="project-item reveal" style="--p-color:var(--c-plum)" onclick="window.open('https://www.kaggle.com/code/voonyan/dl-crypto-time-series-forecasting','_blank')">
+        <div class="project-thumb">📉</div>
+        <div class="project-body">
+          <div class="project-name">Deep Learning for Crypto Time Series Forecasting</div>
+          <div class="project-desc">Built on data from my own crypto pipeline. Trains a global <strong>LSTM</strong> across 10 coins in PyTorch to forecast next-day log return and next-day volatility, benchmarked against naive, EWMA and tuned ridge baselines. Result reported honestly: returns behave like a random walk (chance-level directional accuracy), while <strong>volatility is forecastable</strong> — the LSTM posts the lowest MAE/RMSE once anchored on the persistence forecast.</div>
+          <div class="project-meta">Deep Learning · PyTorch · LSTM · Time Series</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+      <div class="project-item reveal" style="--p-color:var(--c-peach)" onclick="window.open('https://www.kaggle.com/code/voonyan/human-action-recognition','_blank')">
+        <div class="project-thumb">🏃</div>
+        <div class="project-body">
+          <div class="project-name">Human Action Recognition — ResNet-50 Transfer Learning</div>
+          <div class="project-desc">Fine-tuned a pretrained <strong>ResNet-50</strong> in PyTorch to classify 12,600 unconstrained web photos across 15 action classes. Stratified 85/15 split, heavy augmentation (crop, flip, jitter, rotation, random erasing), and discriminative learning rates — a gentle 1e-4 on the backbone, 3e-4 on the new head — reaching <strong>84.4% validation accuracy</strong> vs 6.7% chance.</div>
+          <div class="project-meta">Deep Learning · PyTorch · ResNet-50 · Transfer Learning</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+      <div class="project-item reveal" style="--p-color:var(--c-gold)" onclick="window.open('https://www.kaggle.com/code/voonyan/image-captioning-on-flickr8k','_blank')">
+        <div class="project-thumb">🖼️</div>
+        <div class="project-body">
+          <div class="project-name">Image Captioning on Flickr8k — CNN + Attention</div>
+          <div class="project-desc">End-to-end caption generation in <strong>TensorFlow / Keras</strong>: a frozen InceptionV3 encoder paired with an LSTM decoder guided by <strong>Bahdanau attention</strong>, trained with teacher forcing and early stopping over the 8,091-image Flickr8k corpus. Evaluated with masked cross-entropy, corpus-level BLEU against 5 human references, beam search, and attention-map visualisation — reaching BLEU-1 = 0.533 / BLEU-4 = 0.139.</div>
+          <div class="project-meta">Deep Learning · TensorFlow · Attention · NLP + Vision</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
 
       <div class="project-item reveal" style="--p-color:var(--c-mint)" onclick="window.open('https://www.kaggle.com/code/voonyan/titanic-machine-learning-from-disaster','_blank')">
         <div class="project-thumb">🚢</div>
