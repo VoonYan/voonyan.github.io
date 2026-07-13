@@ -419,6 +419,24 @@ nav.scrolled { border-color: var(--line) }
 }
 .project-item:hover .project-arr { transform: translate(3px,-3px); color: var(--ink) }
 
+/* ── live dashboard button (on pipeline cards) ── */
+.project-actions { display: flex; gap: .5rem; margin-top: .7rem; flex-wrap: wrap }
+.dash-btn {
+  font-family: var(--font-mono);
+  font-size: 11.5px; letter-spacing: .02em;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  padding: .38rem .85rem;
+  display: inline-flex; align-items: center; gap: .4rem;
+  cursor: pointer;
+  transition: background .18s, border-color .18s, color .18s, transform .18s;
+}
+.dash-btn:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); transform: translateY(-1px) }
+.dash-btn .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #3dbc5e; animation: pulse 2.4s infinite; flex-shrink: 0 }
+.dash-btn:hover .live-dot { background: var(--bg) }
+
 /* ── skills marquee ── */
 .marquee {
   overflow: hidden;
@@ -757,12 +775,58 @@ footer {
     </div>
     <div class="project-list">
 
+      <div class="project-item reveal" style="--p-color:var(--c-mint)" onclick="window.open('https://github.com/VoonYan/australia-weather-data-pipeline','_blank')">
+        <div class="project-thumb">🌦️</div>
+        <div class="project-body">
+          <div class="project-name">Australia Weather Data Pipeline — End-to-End ELT</div>
+          <div class="project-desc">A self-refreshing data engineering project collecting daily weather for Australia's eight capital cities from the <strong>Open-Meteo</strong> API. Incremental ingestion (year-one backfill, then a rolling 10-day refetch) lands raw JSON, an ETL step upserts a tidy CSV source-of-truth, and a <strong>DuckDB</strong> warehouse is rebuilt with a fact table, city dimension, and monthly / city-summary mart views. A <strong>GitHub Actions</strong> cron runs it daily and commits fresh data, feeding an interactive <strong>Streamlit</strong> dashboard.</div>
+          <div class="project-meta">Data Engineering · DuckDB · ETL · GitHub Actions</div>
+          <div class="project-actions">
+            <button class="dash-btn" onclick="event.stopPropagation(); window.open('https://australia-weather-data-pipeline-ujw4fsdhagwhnqqr5uif7d.streamlit.app/','_blank')"><span class="live-dot"></span>Live dashboard ↗</button>
+          </div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+      <div class="project-item reveal" style="--p-color:var(--c-sage)" onclick="window.open('https://www.kaggle.com/code/voonyan/australian-capital-cities-weather-eda-prediction','_blank')">
+        <div class="project-thumb">🌡️</div>
+        <div class="project-body">
+          <div class="project-name">Australian Capital Cities Weather — EDA &amp; Prediction</div>
+          <div class="project-desc">Built on data from my own weather pipeline. Loads the live CSV straight from GitHub, runs leakage-safe feature engineering (calendar, lag &amp; rolling features), a deep EDA of temperature, rain, wind &amp; sunshine, then predicts tomorrow's max temperature and rain with classical models and an <strong>LSTM</strong> — all judged honestly against persistence baselines on a strictly chronological split. Boosted trees clearly beat the baselines on rain; temperature stayed hard to beat, and I say so plainly.</div>
+          <div class="project-meta">Data Science · LSTM · Forecasting · Time Series</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+      <div class="project-item reveal" style="--p-color:var(--c-lilac)" onclick="window.open('https://www.kaggle.com/code/voonyan/aviation-industry-analysis-prediction','_blank')">
+        <div class="project-thumb">✈️</div>
+        <div class="project-body">
+          <div class="project-name">Global Aviation Industry Analysis &amp; Prediction</div>
+          <div class="project-desc">A full data-science cycle across five aviation datasets (2010–2026): airline financials, Boeing vs Airbus order books, regional passenger traffic, top routes and major incidents — covering the 737 MAX crisis, COVID collapse and recovery. Cleaning, feature engineering, EDA, nine analytical tasks, then <strong>machine learning</strong> and an <strong>LSTM</strong> forecasting monthly regional traffic, with the LSTM topping the leaderboard by learning momentum through the out-of-range recovery period.</div>
+          <div class="project-meta">Data Science · EDA · LSTM · Forecasting</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+      <div class="project-item reveal" style="--p-color:var(--c-rose)" onclick="window.open('https://www.kaggle.com/code/voonyan/dl-phishing-email-detection','_blank')">
+        <div class="project-thumb">🎣</div>
+        <div class="project-body">
+          <div class="project-name">Phishing Email Detection with Deep Learning</div>
+          <div class="project-desc">Classifies 82,000+ emails from six merged public corpora as phishing/spam vs legitimate. Benchmarks Naive Bayes &amp; Logistic Regression on TF-IDF against three deep models — a feedforward net, a <strong>1D CNN</strong>, and a <strong>bidirectional LSTM</strong> — selecting on spam-class F1. Key finding: on pre-cleaned text, word identity beats word order, so TF-IDF models won; an interpretability audit even exposed corpus-identity leakage that caps how far the benchmark should be trusted.</div>
+          <div class="project-meta">Deep Learning · NLP · BiLSTM · Text Classification</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
       <div class="project-item reveal" style="--p-color:var(--c-sky)" onclick="window.open('https://github.com/VoonYan/crypto_market_data_pipeline','_blank')">
         <div class="project-thumb">⚙️</div>
         <div class="project-body">
           <div class="project-name">Crypto Market Data Pipeline — End-to-End ELT</div>
           <div class="project-desc">A self-updating data engineering project: pulls hourly crypto prices from the CoinGecko API with incremental, watermark-based ingestion, lands immutable raw parquet, then models it into a warehouse with <strong>dbt on DuckDB</strong> — staging, hourly-to-daily OHLCV, and marts for returns, rolling volatility, drawdown &amp; pairwise correlations. 18 dbt tests + pytest gate every layer, and a <strong>GitHub Actions</strong> cron rebuilds and commits fresh data daily, feeding a live <strong>Streamlit</strong> dashboard.</div>
           <div class="project-meta">Data Engineering · dbt · DuckDB · GitHub Actions</div>
+          <div class="project-actions">
+            <button class="dash-btn" onclick="event.stopPropagation(); window.open('https://cryptomarketdatapipeline-gfappxb5r5lnmrdzxtrcb6o.streamlit.app/','_blank')"><span class="live-dot"></span>Live dashboard ↗</button>
+          </div>
         </div>
         <div class="project-arr">↗</div>
       </div>
