@@ -802,8 +802,8 @@ footer {
         <div class="project-thumb">✈️</div>
         <div class="project-body">
           <div class="project-name">Global Aviation Industry Analysis &amp; Prediction</div>
-          <div class="project-desc">A full data-science cycle across five aviation datasets (2010–2026): airline financials, Boeing vs Airbus order books, regional passenger traffic, top routes and major incidents — covering the 737 MAX crisis, COVID collapse and recovery. Cleaning, feature engineering, EDA, nine analytical tasks, then <strong>machine learning</strong> and an <strong>LSTM</strong> forecasting monthly regional traffic, with the LSTM topping the leaderboard by learning momentum through the out-of-range recovery period.</div>
-          <div class="project-meta">Data Science · EDA · LSTM · Forecasting</div>
+          <div class="project-desc">A full data-science cycle across five aviation datasets (2010–2026): airline financials, Boeing vs Airbus order books, regional passenger traffic, top routes and major incidents — covering the 737 MAX crisis, COVID collapse and recovery. Cleaning, feature engineering, EDA and nine analytical tasks, then a next month forecast of regional passenger traffic on a chronological split. A <strong>random forest</strong> did best, with MAE 4.30 bn RPK against 7.23 for a seasonal naive baseline (R² 0.985). The LSTM ranked fourth.</div>
+          <div class="project-meta">Data Science · EDA · Random Forest · Forecasting</div>
         </div>
         <div class="project-arr">↗</div>
       </div>
@@ -855,8 +855,18 @@ footer {
         <div class="project-thumb">🖼️</div>
         <div class="project-body">
           <div class="project-name">Image Captioning on Flickr8k — CNN + Attention</div>
-          <div class="project-desc">End-to-end caption generation in <strong>TensorFlow / Keras</strong>: a frozen InceptionV3 encoder paired with an LSTM decoder guided by <strong>Bahdanau attention</strong>, trained with teacher forcing and early stopping over the 8,091-image Flickr8k corpus. Evaluated with masked cross-entropy, corpus-level BLEU against 5 human references, beam search, and attention-map visualisation — reaching BLEU-1 = 0.533 / BLEU-4 = 0.139.</div>
+          <div class="project-desc">End-to-end caption generation in <strong>TensorFlow / Keras</strong>: a frozen InceptionV3 encoder paired with an LSTM decoder guided by <strong>Bahdanau attention</strong>, trained with teacher forcing and early stopping over the 8,091-image Flickr8k corpus. Evaluated with masked cross-entropy, corpus-level BLEU against 5 human references, beam search, and attention-map visualisation. On 500 held-out test images it reached BLEU-1 0.529 and BLEU-4 0.129.</div>
           <div class="project-meta">Deep Learning · TensorFlow · Attention · NLP + Vision</div>
+        </div>
+        <div class="project-arr">↗</div>
+      </div>
+
+      <div class="project-item reveal" style="--p-color:var(--c-coral)" onclick="window.open('https://github.com/RandomDev92/AI-Learning-Outcome-Builder','_blank')">
+        <div class="project-thumb">📝</div>
+        <div class="project-body">
+          <div class="project-name">AI Learning Outcome Builder (Team Project)</div>
+          <div class="project-desc">A team of six built this <strong>Flask</strong> web app for a client at UWA. It helps educators write unit learning outcomes that align with Bloom's Taxonomy. I owned the AI part. I researched the options and chose Google's <strong>Gemma 3</strong> through the Google GenAI API, then wrote the prompts and the evaluation logic. Each outcome is checked against the unit level, Bloom's verb lists, a banned word list and the outcome count range for the unit's credit points. It then gets a status of GOOD, COULD_IMPROVE or NEEDS_REVISION, with a suggested rewrite when it is not GOOD. The web app, accounts and database were team work.</div>
+          <div class="project-meta">AI · LLM · Gemma 3 · Flask · Team Project</div>
         </div>
         <div class="project-arr">↗</div>
       </div>
